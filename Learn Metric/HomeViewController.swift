@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var iconView: SKYIconView!
     @IBOutlet weak var summaryLabel: UILabel!
     
-    let client = DarkSkyClient(apiKey: "xxxxxxxxxxx")
+    let client = DarkSkyClient(apiKey: "xxxxxxxxxxxxxxx")
     let iconAndLoadingModel = IconAndLoadingModel()
     
     override func viewDidLoad() {
@@ -34,6 +34,8 @@ class HomeViewController: UIViewController {
     // TODO: Refresh button
     
     func refresh() {
+        
+        // Ensures loadingView is active and iconView is hidden
         iconView.isHidden = true
         loadingView.isHidden = false
         loadingView.type = .pacman
@@ -41,21 +43,24 @@ class HomeViewController: UIViewController {
         summaryLabel.text = "Loading..."
         
         Locator.currentPosition(accuracy: .city, timeout: Timeout.delayed(10), onSuccess: { location in
-            self.client.getForecast(latitude: 37.8267, longitude: -122.4233) { result in
+            self.client.getForecast(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { result in
                 switch result {
                 case .success(let currentForecast, let requestMetadata):
                     print("getForecast successful: \(requestMetadata)")
                     
                     let n = NumberFormatter()
                     
+                    // Fahrenheit is rounded to whole number
                     n.maximumFractionDigits = 0
                     let currentTempF = Measurement(value: (currentForecast.currently?.apparentTemperature)!, unit: UnitTemperature.fahrenheit)
                     let roundedF = n.string(for: currentTempF.value)!
                     
+                    // Celsius is rounded to 1 decimal place
                     n.maximumFractionDigits = 1
                     let currentTempC = currentTempF.converted(to: UnitTemperature.celsius)
                     let roundedC = n.string(for: currentTempC.value)!
                     
+                    // Swaps the loadingView with iconView for weather
                     DispatchQueue.main.async {
                         self.loadingView.isHidden = true
                         self.iconView.isHidden = false
