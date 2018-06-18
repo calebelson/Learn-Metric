@@ -148,11 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				C905182520C9FE7900EBBCD0 /* AppDelegate.swift */,
-				C905182720C9FE7900EBBCD0 /* HomeViewController.swift */,
+				C963024020D86B0A00D24EE3 /* View Controllers */,
 				C905182920C9FE7900EBBCD0 /* Main.storyboard */,
-				C904C5E220D75D6200DA14AA /* TemperatureModel.swift */,
-				C960711D20D484130016A797 /* IconAndLoadingModel.swift */,
-				C960711B20D483920016A797 /* IconAndLoadingViewController.swift */,
+				C963023F20D86B0400D24EE3 /* Models */,
 				C905182F20C9FE7A00EBBCD0 /* Assets.xcassets */,
 				C905183120C9FE7A00EBBCD0 /* LaunchScreen.storyboard */,
 				C905183420C9FE7A00EBBCD0 /* Info.plist */,
@@ -178,6 +176,24 @@
 				C905184A20C9FE7A00EBBCD0 /* Info.plist */,
 			);
 			path = "Learn MetricUITests";
+			sourceTree = "<group>";
+		};
+		C963023F20D86B0400D24EE3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C904C5E220D75D6200DA14AA /* TemperatureModel.swift */,
+				C960711D20D484130016A797 /* IconAndLoadingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C963024020D86B0A00D24EE3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C905182720C9FE7900EBBCD0 /* HomeViewController.swift */,
+				C960711B20D483920016A797 /* IconAndLoadingViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
