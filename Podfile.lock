@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (4.7.2)
   - ForecastIO (5.0.0)
   - NVActivityIndicatorView (4.2.1):
     - NVActivityIndicatorView/Presenter (= 4.2.1)
@@ -9,26 +8,23 @@ PODS:
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7)
   - ForecastIO
   - NVActivityIndicatorView
   - SwiftLocation (~> 3.2.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - ForecastIO
     - NVActivityIndicatorView
     - SwiftLocation
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   ForecastIO: 013d0110a0977712624973ceb425da1936b02acf
   NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 653e8b59a2f5202d4897c8acad76a29cd06ef62d
+PODFILE CHECKSUM: bf3419593b4d76f2c4f1b629bf21d7e862c93d40
 
 COCOAPODS: 1.5.3

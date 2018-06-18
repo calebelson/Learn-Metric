@@ -6,7 +6,6 @@ target 'Learn Metric' do
   use_frameworks!
 
 pod 'NVActivityIndicatorView'
-pod 'Alamofire', '~> 4.7'
 pod 'ForecastIO'
 pod 'SwiftLocation', '~> 3.2.3'
 

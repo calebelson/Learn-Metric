@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "488E352B74DD1DD023782EEAA0DCF001"
+               BlueprintIdentifier = "94C617A91B1BD204B6568B5DD8D43E4B"
                BuildableName = "Pods_Learn_Metric.framework"
                BlueprintName = "Pods-Learn Metric"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "488E352B74DD1DD023782EEAA0DCF001"
+            BlueprintIdentifier = "94C617A91B1BD204B6568B5DD8D43E4B"
             BuildableName = "Pods_Learn_Metric.framework"
             BlueprintName = "Pods-Learn Metric"
             ReferencedContainer = "container:Pods.xcodeproj">
