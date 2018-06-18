@@ -12,12 +12,14 @@ import ForecastIO
 import SwiftLocation
 
 class HomeViewController: UIViewController {
+    
     @IBOutlet weak var loadingView: NVActivityIndicatorView!
     @IBOutlet weak var iconView: SKYIconView!
     @IBOutlet weak var summaryLabel: UILabel!
     
     let darkSkyClient = DarkSkyClient(apiKey: "xxxx")
     let iconAndLoadingModel = IconAndLoadingModel()
+    let temperatureModel = TemperatureModel()
     
     override func viewDidLoad() {
         refreshButton(.init())
@@ -31,9 +33,10 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // TODO: Refresh button
+    // MARK: Refresh button
     @IBAction func refreshButton(_ sender: UIButton) {
-        // Ensures loadingView is active and iconView is hidden
+        
+        // Sets default view
         iconView.isHidden = true
         iconView.pause()
         
@@ -45,13 +48,15 @@ class HomeViewController: UIViewController {
         summaryLabel.text = "Loading..."
         
         Locator.currentPosition(accuracy: .city, timeout: Timeout.delayed(8.0), onSuccess: { location in
+            
             self.darkSkyClient.getForecast(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { result in
+                
                 switch result {
                 case .success(let currentForecast, let requestMetadata):
                     print("getForecast successful: \(requestMetadata)")
                     
                     // This is set to a tuple for the converted and formatted apparent temperature values
-                    let currentTemperature = TemperatureModel().temperatureConverter(currentlyApparentTemperature: currentForecast.currently?.apparentTemperature)
+                    let currentTemperature = self.temperatureModel.temperatureConverter(currentlyApparentTemperature: currentForecast.currently?.apparentTemperature)
                     
                     // Swaps the loadingView with iconView for weather, inserts converted values to the summary label
                     DispatchQueue.main.async {
@@ -77,8 +82,10 @@ class HomeViewController: UIViewController {
                     }
                 }
             }
+            
         }, onFail: { err, last in
             print("Failed to get location: \(err)")
+            
             DispatchQueue.main.async {
                 self.loadingView.color = .red
                 self.loadingView.startAnimating()
@@ -86,6 +93,8 @@ class HomeViewController: UIViewController {
             }
         })
     }
-     
+    
+    // TODO: Info button
+    
 }
 
