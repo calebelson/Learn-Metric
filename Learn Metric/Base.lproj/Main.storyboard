@@ -82,6 +82,7 @@
                     <connections>
                         <outlet property="iconView" destination="S9F-By-pcU" id="ZIo-S1-b0v"/>
                         <outlet property="loadingView" destination="slR-8V-Dm7" id="K6o-UR-6NC"/>
+                        <outlet property="refreshButtonOutlet" destination="hWh-uE-QkE" id="Len-5M-WBz"/>
                         <outlet property="summaryLabel" destination="JQV-RV-ds4" id="oWu-Wf-Ffd"/>
                     </connections>
                 </viewController>

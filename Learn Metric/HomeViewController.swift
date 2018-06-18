@@ -16,13 +16,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var loadingView: NVActivityIndicatorView!
     @IBOutlet weak var iconView: SKYIconView!
     @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var refreshButtonOutlet: UIButton!
     
     let darkSkyClient = DarkSkyClient(apiKey: "xxxx")
     let iconAndLoadingModel = IconAndLoadingModel()
     let temperatureModel = TemperatureModel()
     
+    
     override func viewDidLoad() {
-        refreshButton(.init())
+        refreshButtonOutlet.sendActions(for: .touchUpInside)
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,6 +33,7 @@ class HomeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
     // MARK: Refresh button
@@ -69,7 +72,7 @@ class HomeViewController: UIViewController {
                         self.iconView.setColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
                         
                         self.summaryLabel.text = "It is currently " + (currentForecast.currently?.summary)! +
-                        "\n\(currentTemperature.fahrenheit) °F and \(currentTemperature.celsius) °C"
+                        "\n\(currentTemperature.fahrenheit) and \(currentTemperature.celsius)"
                     }
                     
                 case .failure(let error):
