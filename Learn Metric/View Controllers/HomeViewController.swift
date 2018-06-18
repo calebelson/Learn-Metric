@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var refreshButtonOutlet: UIButton!
     
-    let darkSkyClient = DarkSkyClient(apiKey: "de4f9531542756b3e5ddc9e88f09ceaa")
+    let darkSkyClient = DarkSkyClient(apiKey: "xxxx")
     let iconAndLoadingModel = IconAndLoadingModel()
     let temperatureModel = TemperatureModel()
     
