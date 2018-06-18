@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,61 +19,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-uE-QkE">
+                                <rect key="frame" x="16" y="44" width="32" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" image="RefreshButton"/>
+                                <connections>
+                                    <action selector="refreshButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ck7-vT-1eq"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="BH0-O4-Ntq">
-                                <rect key="frame" x="16" y="53.999999999999972" width="343" height="429.33333333333326"/>
+                                <rect key="frame" x="25.666666666666657" y="76" width="324" height="324.66666666666669"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-uE-QkE">
-                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" image="RefreshButton"/>
-                                        <connections>
-                                            <action selector="refreshButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ck7-vT-1eq"/>
-                                        </connections>
-                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-Kl-oEA">
-                                        <rect key="frame" x="0.0" y="32" width="343" height="397.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="324" height="324.66666666666669"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9F-By-pcU" customClass="SKYIconView" customModule="Learn_Metric">
-                                                <rect key="frame" x="0.0" y="-343" width="343" height="343"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="324" height="324.66666666666669"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slR-8V-Dm7" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="343"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="324" height="324.66666666666669"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="slR-8V-Dm7" secondAttribute="height" multiplier="1:1" id="7ml-iZ-tqY"/>
-                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
                                                         <color key="value" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-RV-ds4">
-                                                <rect key="frame" x="0.0" y="343" width="343" height="54.333333333333314"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="slR-8V-Dm7" secondAttribute="bottom" multiplier="1.1" constant="20" symbolic="YES" id="7RM-kT-mjl"/>
-                                            <constraint firstItem="slR-8V-Dm7" firstAttribute="height" secondItem="S9F-By-pcU" secondAttribute="height" id="VJB-lM-drW"/>
-                                            <constraint firstItem="slR-8V-Dm7" firstAttribute="width" secondItem="S9F-By-pcU" secondAttribute="width" id="yzy-BB-kT9"/>
+                                            <constraint firstItem="slR-8V-Dm7" firstAttribute="centerY" secondItem="pkT-Kl-oEA" secondAttribute="centerY" id="3FN-J8-Xjv"/>
+                                            <constraint firstItem="slR-8V-Dm7" firstAttribute="height" secondItem="pkT-Kl-oEA" secondAttribute="height" id="EyP-ct-LlA"/>
+                                            <constraint firstItem="S9F-By-pcU" firstAttribute="height" secondItem="pkT-Kl-oEA" secondAttribute="height" id="J3c-Ti-ffn"/>
+                                            <constraint firstItem="S9F-By-pcU" firstAttribute="centerY" secondItem="pkT-Kl-oEA" secondAttribute="centerY" id="L4L-Mz-ORw"/>
+                                            <constraint firstItem="S9F-By-pcU" firstAttribute="width" secondItem="pkT-Kl-oEA" secondAttribute="width" id="MoU-Fv-zd7"/>
+                                            <constraint firstItem="slR-8V-Dm7" firstAttribute="width" secondItem="pkT-Kl-oEA" secondAttribute="width" id="Phc-SU-OFD"/>
+                                            <constraint firstItem="S9F-By-pcU" firstAttribute="centerX" secondItem="pkT-Kl-oEA" secondAttribute="centerX" id="PnZ-qX-VaP"/>
+                                            <constraint firstAttribute="width" secondItem="pkT-Kl-oEA" secondAttribute="height" multiplier="1:1" id="YEb-jD-yrK"/>
+                                            <constraint firstItem="slR-8V-Dm7" firstAttribute="centerX" secondItem="pkT-Kl-oEA" secondAttribute="centerX" id="uwg-Zx-Dcw"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="pkT-Kl-oEA" secondAttribute="trailing" id="pQw-mM-r2p"/>
+                                    <constraint firstItem="pkT-Kl-oEA" firstAttribute="width" relation="lessThanOrEqual" secondItem="BH0-O4-Ntq" secondAttribute="width" id="IYG-xW-yzU"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-RV-ds4">
+                                <rect key="frame" x="25.666666666666657" y="410.66666666666669" width="324" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="lxq-2X-oKg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="BH0-O4-Ntq" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="0IR-wM-zUt"/>
-                            <constraint firstItem="BH0-O4-Ntq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="M13-F6-nDQ"/>
-                            <constraint firstItem="BH0-O4-Ntq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="skM-En-JLH"/>
+                            <constraint firstItem="hWh-uE-QkE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HdN-Ui-rUt"/>
+                            <constraint firstItem="hWh-uE-QkE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="QPh-oj-eMY"/>
+                            <constraint firstItem="BH0-O4-Ntq" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="Qy5-Sz-Bo3"/>
+                            <constraint firstItem="BH0-O4-Ntq" firstAttribute="top" secondItem="hWh-uE-QkE" secondAttribute="bottom" id="eT7-8b-UK3"/>
+                            <constraint firstItem="JQV-RV-ds4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gVL-KW-Pod"/>
+                            <constraint firstItem="JQV-RV-ds4" firstAttribute="top" secondItem="pkT-Kl-oEA" secondAttribute="bottom" constant="10" id="isX-B5-nHR"/>
+                            <constraint firstItem="JQV-RV-ds4" firstAttribute="width" secondItem="pkT-Kl-oEA" secondAttribute="width" id="yw3-Az-61a"/>
+                            <constraint firstItem="BH0-O4-Ntq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zt2-aI-7hK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

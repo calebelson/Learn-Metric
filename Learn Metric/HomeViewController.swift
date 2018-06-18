@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var refreshButtonOutlet: UIButton!
     
-    let darkSkyClient = DarkSkyClient(apiKey: "xxxx")
+    let darkSkyClient = DarkSkyClient(apiKey: "de4f9531542756b3e5ddc9e88f09ceaa")
     let iconAndLoadingModel = IconAndLoadingModel()
     let temperatureModel = TemperatureModel()
     
@@ -49,6 +49,7 @@ class HomeViewController: UIViewController {
         loadingView.startAnimating()
         
         summaryLabel.text = "Loading..."
+        summaryLabel.textColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
         
         Locator.currentPosition(accuracy: .city, timeout: Timeout.delayed(8.0), onSuccess: { location in
             
@@ -72,16 +73,24 @@ class HomeViewController: UIViewController {
                         self.iconView.setColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
                         
                         self.summaryLabel.text = "It is currently " + (currentForecast.currently?.summary)! +
-                        "\n\(currentTemperature.fahrenheit) and \(currentTemperature.celsius)"
+                        "\n\(currentTemperature.fahrenheit), \(currentTemperature.celsius)"
                     }
                     
                 case .failure(let error):
                     print("getForecast error: \(error)")
                     
                     DispatchQueue.main.async {
-                        self.loadingView.color = .red
-                        self.loadingView.startAnimating()
-                        self.summaryLabel.text = "Error getting temperature,\ncheck network and location settings"
+                        self.loadingView.isHidden = true
+                        self.loadingView.stopAnimating()
+                        
+                        self.iconView.isHidden = false
+                        self.iconView.setType = .partlyCloudyDay
+                        self.iconView.play()
+                        self.iconView.setColor = #colorLiteral(red: 0.944022473, green: 0.4014404026, blue: 0.4582167554, alpha: 1)
+                        
+                        self.summaryLabel.textColor = #colorLiteral(red: 0.944022473, green: 0.4014404026, blue: 0.4582167554, alpha: 1)
+                        self.summaryLabel.text = "Error getting temperature, check\nnetwork and location settings"
+                        
                     }
                 }
             }
