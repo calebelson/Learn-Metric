@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qt7-kW-dJh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q4t-pC-g2c">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -99,6 +99,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="133.00492610837438"/>
+        </scene>
+        <!--All Animations View Controller-->
+        <scene sceneID="Npw-bI-x2f">
+            <objects>
+                <viewController id="q4t-pC-g2c" customClass="AllAnimationsViewController" customModule="Learn_Metric" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pfb-XL-cWa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBh-XE-gr0">
+                                <rect key="frame" x="0.0" y="219.33333333333337" width="375" height="375"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sBh-XE-gr0" secondAttribute="height" multiplier="1:1" id="TGj-c3-dIh"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0uP-Tj-5eb" appends="YES" id="Lcp-0m-UXT"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="sBh-XE-gr0" firstAttribute="centerY" secondItem="Pfb-XL-cWa" secondAttribute="centerY" constant="0.5" id="Bz3-N5-7xf"/>
+                            <constraint firstItem="sBh-XE-gr0" firstAttribute="leading" secondItem="Pfb-XL-cWa" secondAttribute="leading" id="esc-Vj-M49"/>
+                            <constraint firstItem="sBh-XE-gr0" firstAttribute="trailing" secondItem="66B-u5-EIS" secondAttribute="trailing" id="kZk-fc-TXO"/>
+                            <constraint firstItem="sBh-XE-gr0" firstAttribute="centerX" secondItem="Pfb-XL-cWa" secondAttribute="centerX" id="xwG-dO-8I1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="66B-u5-EIS"/>
+                    </view>
+                    <connections>
+                        <outlet property="allAnimationsView" destination="sBh-XE-gr0" id="8Hc-Az-8l1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wQG-b3-2Uo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0uP-Tj-5eb">
+                    <connections>
+                        <action selector="changeAnimation:" destination="q4t-pC-g2c" id="Z7g-Xb-au2"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2061.5999999999999" y="132.26600985221674"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tSI-9b-qh7">
