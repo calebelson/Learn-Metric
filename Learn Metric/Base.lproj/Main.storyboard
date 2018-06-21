@@ -52,7 +52,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="2kn-UC-sp5">
-                        <barButtonItem key="leftBarButtonItem" title="RefreshButton" image="RefreshButton" id="Zwh-c4-YnJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Zwh-c4-YnJ">
                             <color key="tintColor" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="refreshButton:" destination="BYZ-38-t0r" id="KKL-hM-LJU"/>
@@ -136,7 +136,4 @@
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="RefreshButton" width="32" height="32"/>
-    </resources>
 </document>
