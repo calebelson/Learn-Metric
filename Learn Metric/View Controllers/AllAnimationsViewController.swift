@@ -26,6 +26,10 @@ class AllAnimationsViewController: UIViewController {
         allAnimationsView.addSubview(skyconView)
         
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
         
     @IBAction func changeAnimation(_ sender: UITapGestureRecognizer) {
         

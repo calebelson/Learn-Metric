@@ -10,100 +10,148 @@ import UIKit
 import NVActivityIndicatorView
 import ForecastIO
 import SwiftLocation
+import CoreLocation
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var loadingView: NVActivityIndicatorView!
-    @IBOutlet weak var iconView: SKYIconView!
-    @IBOutlet weak var summaryLabel: UILabel!
-    @IBOutlet weak var refreshButtonOutlet: UIButton!
-    
     let darkSkyClient = DarkSkyClient(apiKey: "xxxx")
+
+    
+    @IBOutlet weak var weatherAnimationView: UIView!
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var refreshButtonOutlet: UIBarButtonItem!
+    lazy var skyIconView = SKYIconView(frame: CGRect(x: 0, y: 0, width: weatherAnimationView.frame.width, height: weatherAnimationView.frame.height))
+    lazy var activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: weatherAnimationView.frame.width, height: weatherAnimationView.frame.height))
+    
     let iconAndLoadingModel = IconAndLoadingModel()
     let temperatureModel = TemperatureModel()
     
-    
     override func viewDidLoad() {
-        refreshButtonOutlet.sendActions(for: .touchUpInside)
-        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        skyIconView.backgroundColor = .black
+        activityIndicatorView.backgroundColor = .black
+        weatherAnimationView.backgroundColor = .black
+        
+        // Default loading view
+        setIconAndSummary()
+
+        if let coordinates = getLocation() {
+            getWeather(coordinates: coordinates)
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Completely hide navigation bar background
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
+        // Change text color in navigation bar
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
     }
     
     // MARK: Refresh button
-    @IBAction func refreshButton(_ sender: UIButton) {
+    @IBAction func refreshButton(_ sender: Any) {
+        // Set view to loading view
+        setIconAndSummary()
         
-        // Sets default view
-        iconView.isHidden = true
-        iconView.pause()
-        
-        loadingView.isHidden = false
-        loadingView.type = .pacman
-        loadingView.color = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
-        loadingView.startAnimating()
-        
-        summaryLabel.text = "Loading..."
-        summaryLabel.textColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
-        
-        Locator.currentPosition(accuracy: .city, timeout: Timeout.delayed(8.0), onSuccess: { location in
+        if let coordinates = getLocation() {
+            getWeather(coordinates: coordinates)
+        }
+    }
+    
+    // MARK: Location
+    func getLocation() -> CLLocationCoordinate2D? {
+        Locator.currentPosition(accuracy: .neighborhood, timeout: Timeout.delayed(8), onSuccess: { location in
+            print("Location successfully attained")
             
-            self.darkSkyClient.getForecast(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { result in
-                
-                switch result {
-                case .success(let currentForecast, let requestMetadata):
-                    print("getForecast successful: \(requestMetadata)")
-                    
-                    // This is set to a tuple for the converted and formatted apparent temperature values
-                    let currentTemperature = self.temperatureModel.temperatureConverter(currentlyApparentTemperature: currentForecast.currently?.apparentTemperature)
-                    
-                    // Swaps the loadingView with iconView for weather, inserts converted values to the summary label
-                    DispatchQueue.main.async {
-                        self.loadingView.isHidden = true
-                        self.loadingView.stopAnimating()
-                        
-                        self.iconView.isHidden = false
-                        self.iconView.setType = self.iconAndLoadingModel.weatherIcon(icon: (currentForecast.currently?.icon?.rawValue)!)
-                        self.iconView.play()
-                        self.iconView.setColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
-                        
-                        self.summaryLabel.text = "It is currently " + (currentForecast.currently?.summary)! +
-                        "\n\(currentTemperature.fahrenheit), \(currentTemperature.celsius)"
-                    }
-                    
-                case .failure(let error):
-                    print("getForecast error: \(error)")
-                    
-                    DispatchQueue.main.async {
-                        self.loadingView.isHidden = true
-                        self.loadingView.stopAnimating()
-                        
-                        self.iconView.isHidden = false
-                        self.iconView.setType = .partlyCloudyDay
-                        self.iconView.play()
-                        self.iconView.setColor = #colorLiteral(red: 0.944022473, green: 0.4014404026, blue: 0.4582167554, alpha: 1)
-                        
-                        self.summaryLabel.textColor = #colorLiteral(red: 0.944022473, green: 0.4014404026, blue: 0.4582167554, alpha: 1)
-                        self.summaryLabel.text = "Error getting temperature, check\nnetwork and location settings"
-                        
-                    }
-                }
-            }
+            return self.getWeather(coordinates: location.coordinate)
             
         }, onFail: { err, last in
             print("Failed to get location: \(err)")
             
-            DispatchQueue.main.async {
-                self.loadingView.color = .red
-                self.loadingView.startAnimating()
-                self.summaryLabel.text = "Error getting temperature,\ncheck network and location settings"
+            self.setIconAndSummary(weatherRetrievalSuccess: false)
+        })
+        
+        return nil
+    }
+    
+    // MARK: Weather
+    func getWeather(coordinates: CLLocationCoordinate2D) {
+        darkSkyClient.getForecast(latitude: coordinates.latitude, longitude: coordinates.longitude, completion: { result in
+            switch result {
+            case .success(let currentForecast, let requestMetadata):
+                print("getForecast successful: \(requestMetadata)")
+                
+                self.setIconAndSummary(weatherRetrievalSuccess: true, weatherSummary: currentForecast.currently?.summary, apparentTemperature: currentForecast.currently?.apparentTemperature, icon: currentForecast.currently?.icon?.rawValue)
+                
+            case .failure(let error):
+                print("getForecast error: \(error)")
+                
+                self.setIconAndSummary(weatherRetrievalSuccess: false)
             }
         })
+    }
+    
+    
+  
+    // MARK: Icon and summary setup
+    func setIconAndSummary(weatherRetrievalSuccess: Bool? = nil, weatherSummary: String? = nil, apparentTemperature: Double? = nil, icon: String? = nil) {
+        
+        // Clears allAnimationsView
+        DispatchQueue.main.async {
+            self.skyIconView.removeFromSuperview()
+            self.activityIndicatorView.removeFromSuperview()
+        }
+
+        switch weatherRetrievalSuccess {
+        case true:
+            // This is set to a tuple for the converted and formatted apparent temperature values
+            let currentTemperatureValues = temperatureModel.temperatureConverter(currentApparentTemperature: apparentTemperature)
+            
+            DispatchQueue.main.async {
+                self.skyIconView.setType = self.iconAndLoadingModel.weatherIcon(icon: icon!)
+                self.skyIconView.setColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
+                self.weatherAnimationView.addSubview(self.skyIconView)
+                self.skyIconView.play()
+                
+                self.summaryLabel.textColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
+                self.summaryLabel.text = "It is currently " + weatherSummary! +
+                "\n\(currentTemperatureValues.fahrenheit), \(currentTemperatureValues.celsius)"
+            }
+            
+            // Failure getting location or weather info
+        case false:
+            DispatchQueue.main.async {
+                self.skyIconView.setType = .partlyCloudyDay
+                self.skyIconView.setColor = #colorLiteral(red: 0.944022473, green: 0.4014404026, blue: 0.4582167554, alpha: 1)
+                
+                self.weatherAnimationView.addSubview(self.skyIconView)
+                self.skyIconView.play()
+                
+                self.summaryLabel.textColor = #colorLiteral(red: 0.944022473, green: 0.4014404026, blue: 0.4582167554, alpha: 1)
+                self.summaryLabel.text = "Error getting temperature, check\nnetwork and location settings"
+            }
+            
+            // Loading View
+        default:
+            DispatchQueue.main.async {
+                self.activityIndicatorView.type = .pacman
+                self.activityIndicatorView.color = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
+                
+                self.weatherAnimationView.addSubview(self.activityIndicatorView)
+                self.activityIndicatorView.startAnimating()
+                
+                self.summaryLabel.textColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
+                self.summaryLabel.text = "Loading..."
+            }
+        }
     }
     
     // TODO: Info button

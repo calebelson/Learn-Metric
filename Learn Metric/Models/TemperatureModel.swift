@@ -10,7 +10,7 @@ import Foundation
 
 class TemperatureModel {
     
-    func temperatureConverter(currentlyApparentTemperature: Double?) -> (fahrenheit: String, celsius: String) {
+    func temperatureConverter(currentApparentTemperature: Double?) -> (fahrenheit: String, celsius: String) {
         
         let formatter = NumberFormatter()
         let unitFormatter = MeasurementFormatter()
@@ -19,7 +19,7 @@ class TemperatureModel {
 
         // Fahrenheit is rounded to integer
         formatter.maximumFractionDigits = 0
-        let currentTempF = Measurement(value: (currentlyApparentTemperature)!, unit: UnitTemperature.fahrenheit)
+        let currentTempF = Measurement(value: (currentApparentTemperature)!, unit: UnitTemperature.fahrenheit)
         let formattedCurrentTempF = unitFormatter.string(from: currentTempF)
         
         // Celsius is rounded to 1 decimal place
