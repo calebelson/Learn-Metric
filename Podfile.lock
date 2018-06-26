@@ -3,6 +3,7 @@ PODS:
   - NVActivityIndicatorView (4.2.1):
     - NVActivityIndicatorView/Presenter (= 4.2.1)
   - NVActivityIndicatorView/Presenter (4.2.1)
+  - Popover (1.2.0)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
   - SwiftyJSON (4.0.0)
@@ -10,21 +11,24 @@ PODS:
 DEPENDENCIES:
   - ForecastIO
   - NVActivityIndicatorView
+  - Popover
   - SwiftLocation (~> 3.2.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ForecastIO
     - NVActivityIndicatorView
+    - Popover
     - SwiftLocation
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   ForecastIO: 013d0110a0977712624973ceb425da1936b02acf
   NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
+  Popover: 28c1ac8e937ab2b3965bd2da7dd18324357abc41
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: bf3419593b4d76f2c4f1b629bf21d7e862c93d40
+PODFILE CHECKSUM: 5461be01ebc6ceb650c928987efed95a6aa61465
 
 COCOAPODS: 1.5.3

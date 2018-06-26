@@ -11,35 +11,44 @@ import NVActivityIndicatorView
 import ForecastIO
 import SwiftLocation
 import CoreLocation
+import Popover
 
 class HomeViewController: UIViewController {
     
     let darkSkyClient = DarkSkyClient(apiKey: "xxxx")
-
     
+    
+    // MARK: - Parameters, Outlets, and Subviews
     @IBOutlet weak var weatherAnimationView: UIView!
     @IBOutlet weak var summaryLabel: UILabel!
-    @IBOutlet weak var refreshButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var infoButtonOutlet: UIButton!
+    @IBOutlet weak var infoView: UIView!
+    
     lazy var skyIconView = SKYIconView(frame: CGRect(x: 0, y: 0, width: weatherAnimationView.frame.width, height: weatherAnimationView.frame.height))
     lazy var activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: weatherAnimationView.frame.width, height: weatherAnimationView.frame.height))
+    lazy var infoPopoverView = UIView(frame: CGRect(x: 0, y: 0, width: 280, height: 250))
     
     let iconAndLoadingModel = IconAndLoadingModel()
     let temperatureModel = TemperatureModel()
+    let popover = Popover()
     
+    
+    // MARK: - View setup
     override func viewDidLoad() {
+        weatherAnimationView.backgroundColor = .black
+
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         skyIconView.backgroundColor = .black
         activityIndicatorView.backgroundColor = .black
-        weatherAnimationView.backgroundColor = .black
         
         // Default loading view
-        setIconAndSummary()
-
-        if let coordinates = getLocation() {
-            getWeather(coordinates: coordinates)
+        iconAndSummary()
+        
+        if let coordinates = coordinates() {
+            weather(coordinates: coordinates)
         }
     }
     
@@ -48,6 +57,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         // Completely hide navigation bar background
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -59,57 +69,54 @@ class HomeViewController: UIViewController {
     // MARK: Refresh button
     @IBAction func refreshButton(_ sender: Any) {
         // Set view to loading view
-        setIconAndSummary()
+        iconAndSummary()
         
-        if let coordinates = getLocation() {
-            getWeather(coordinates: coordinates)
+        if let coordinates = coordinates() {
+            weather(coordinates: coordinates)
         }
     }
     
-    // MARK: Location
-    func getLocation() -> CLLocationCoordinate2D? {
+    
+    // MARK: - Location, Weather, Icons
+    func coordinates() -> CLLocationCoordinate2D? {
         Locator.currentPosition(accuracy: .neighborhood, timeout: Timeout.delayed(8), onSuccess: { location in
             print("Location successfully attained")
             
-            return self.getWeather(coordinates: location.coordinate)
+            return self.weather(coordinates: location.coordinate)
             
         }, onFail: { err, last in
             print("Failed to get location: \(err)")
             
-            self.setIconAndSummary(weatherRetrievalSuccess: false)
+            self.iconAndSummary(weatherRetrievalSuccess: false)
         })
         
         return nil
     }
     
-    // MARK: Weather
-    func getWeather(coordinates: CLLocationCoordinate2D) {
+    func weather(coordinates: CLLocationCoordinate2D) {
         darkSkyClient.getForecast(latitude: coordinates.latitude, longitude: coordinates.longitude, completion: { result in
             switch result {
             case .success(let currentForecast, let requestMetadata):
                 print("getForecast successful: \(requestMetadata)")
                 
-                self.setIconAndSummary(weatherRetrievalSuccess: true, weatherSummary: currentForecast.currently?.summary, apparentTemperature: currentForecast.currently?.apparentTemperature, icon: currentForecast.currently?.icon?.rawValue)
+                self.iconAndSummary(weatherRetrievalSuccess: true, weatherSummary: currentForecast.currently?.summary, apparentTemperature: currentForecast.currently?.apparentTemperature, icon: currentForecast.currently?.icon?.rawValue)
                 
             case .failure(let error):
                 print("getForecast error: \(error)")
                 
-                self.setIconAndSummary(weatherRetrievalSuccess: false)
+                self.iconAndSummary(weatherRetrievalSuccess: false)
             }
         })
     }
     
-    
-  
-    // MARK: Icon and summary setup
-    func setIconAndSummary(weatherRetrievalSuccess: Bool? = nil, weatherSummary: String? = nil, apparentTemperature: Double? = nil, icon: String? = nil) {
+    func iconAndSummary(weatherRetrievalSuccess: Bool? = nil, weatherSummary: String? = nil, apparentTemperature: Double? = nil, icon: String? = nil) {
         
         // Clears allAnimationsView
         DispatchQueue.main.async {
             self.skyIconView.removeFromSuperview()
             self.activityIndicatorView.removeFromSuperview()
         }
-
+        
         switch weatherRetrievalSuccess {
         case true:
             // This is set to a tuple for the converted and formatted apparent temperature values
@@ -126,10 +133,10 @@ class HomeViewController: UIViewController {
                 "\n\(currentTemperatureValues.fahrenheit), \(currentTemperatureValues.celsius)"
             }
             
-            // Failure getting location or weather info
+        // Failure getting location or weather info
         case false:
             DispatchQueue.main.async {
-                self.skyIconView.setType = .partlyCloudyDay
+                self.skyIconView.setType = .wind
                 self.skyIconView.setColor = #colorLiteral(red: 0.944022473, green: 0.4014404026, blue: 0.4582167554, alpha: 1)
                 
                 self.weatherAnimationView.addSubview(self.skyIconView)
@@ -139,7 +146,7 @@ class HomeViewController: UIViewController {
                 self.summaryLabel.text = "Error getting temperature, check\nnetwork and location settings"
             }
             
-            // Loading View
+        // Loading View
         default:
             DispatchQueue.main.async {
                 self.activityIndicatorView.type = .pacman
@@ -154,7 +161,21 @@ class HomeViewController: UIViewController {
         }
     }
     
-    // TODO: Info button
     
+    // MARK: - Info button
+    @IBAction func infoButton(_ sender: Any) {
+        let options = [.color(UIColor(white: 0.7, alpha: 0.5)), .blackOverlayColor(UIColor(white: 0.0, alpha: 0.45))] as [PopoverOption]
+        let popover = Popover(options: options)
+        
+        infoView.frame = infoPopoverView.frame
+        infoPopoverView.addSubview(infoView)
+        infoView.isHidden = false
+        
+        popover.show(infoPopoverView, fromView: infoButtonOutlet)
+    }
+    
+    @IBAction func poweredByDarkSky(_ sender: UIButton) {
+        UIApplication.shared.open(URL(string: "https://darksky.net/poweredby/")!)
+    }
 }
 

@@ -8,6 +8,7 @@ target 'Learn Metric' do
 pod 'NVActivityIndicatorView'
 pod 'ForecastIO'
 pod 'SwiftLocation', '~> 3.2.3'
+pod 'Popover'
 
   # Pods for Learn Metric
 
