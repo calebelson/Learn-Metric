@@ -10,6 +10,7 @@ import UIKit
 
 class TemperatureConververterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    
     // MARK: - Parameters and Outlets
     @IBOutlet weak var temperaturePicker: UIPickerView!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -19,6 +20,7 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     let kelvinValues = (0...700).map{ $0 }
     let converter = TemperatureModel()
     
+    
     // MARK: - View setup
     override func viewDidLoad() {
         temperaturePicker.dataSource = self
@@ -26,6 +28,7 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
         
         setLabelValue()
     }
+    
     
     // MARK: - Pickerview setup
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -57,5 +60,7 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
         
         temperatureLabel.text = converterValues.celsius
     }
+    
+    // TODO: - Refresh button
     
 }
