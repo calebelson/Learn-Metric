@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C886D2821221223000E627F /* TemperatureConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C886D2721221223000E627F /* TemperatureConverterViewController.swift */; };
 		7099CAD8071BEBBDAB2AC1F4 /* Pods_Learn_MetricUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0032AB17ADBEEA45A9AF85BD /* Pods_Learn_MetricUITests.framework */; };
 		8147238CD14DECEE1B77F771 /* Pods_Learn_MetricTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E8C1401A60584181CC172C /* Pods_Learn_MetricTests.framework */; };
 		BCC452C2A123222AF3B4D585 /* Pods_Learn_Metric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28807D7AC6745186567E3D11 /* Pods_Learn_Metric.framework */; };
@@ -46,6 +47,7 @@
 		0C7376D9880E0EFB6AAF95FA /* Pods-Learn MetricTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Learn MetricTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Learn MetricTests/Pods-Learn MetricTests.release.xcconfig"; sourceTree = "<group>"; };
 		28807D7AC6745186567E3D11 /* Pods_Learn_Metric.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Learn_Metric.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FB93494F34C61F084FB13A /* Pods-Learn MetricUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Learn MetricUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Learn MetricUITests/Pods-Learn MetricUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3C886D2721221223000E627F /* TemperatureConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureConverterViewController.swift; sourceTree = "<group>"; };
 		60E8C1401A60584181CC172C /* Pods_Learn_MetricTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Learn_MetricTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6B6AF5C4CC30A6FC0C1239 /* Pods-Learn MetricTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Learn MetricTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Learn MetricTests/Pods-Learn MetricTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7DDD53C46EB0F6DE2E357911 /* Pods-Learn Metric.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Learn Metric.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Learn Metric/Pods-Learn Metric.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				C905182720C9FE7900EBBCD0 /* HomeViewController.swift */,
 				C960711B20D483920016A797 /* AllAnimationsViewController.swift */,
+				3C886D2721221223000E627F /* TemperatureConverterViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C886D2821221223000E627F /* TemperatureConverterViewController.swift in Sources */,
 				C960711C20D483920016A797 /* AllAnimationsViewController.swift in Sources */,
 				C905182820C9FE7900EBBCD0 /* HomeViewController.swift in Sources */,
 				C905182620C9FE7900EBBCD0 /* AppDelegate.swift in Sources */,

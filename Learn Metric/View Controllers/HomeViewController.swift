@@ -120,7 +120,7 @@ class HomeViewController: UIViewController {
         switch weatherRetrievalSuccess {
         case true:
             // This is set to a tuple for the converted and formatted apparent temperature values
-            let currentTemperatureValues = temperatureModel.temperatureConverter(currentApparentTemperature: apparentTemperature)
+            let currentTemperatureValues = temperatureModel.temperatureConverter(currentApparentFahrenheit: apparentTemperature)
             
             DispatchQueue.main.async {
                 self.skyIconView.setType = self.iconAndLoadingModel.weatherIcon(icon: icon!)
