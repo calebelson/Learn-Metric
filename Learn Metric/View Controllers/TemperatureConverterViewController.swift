@@ -14,11 +14,18 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     // MARK: - Parameters and Outlets
     @IBOutlet weak var temperaturePicker: UIPickerView!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var leftControl: UISegmentedControl!
+    @IBOutlet weak var rightControl: UISegmentedControl!
     
     let fahrenheitValues = (-460...800).map{ $0 }
     let celsiusValues = (-273...427).map{ $0 }
     let kelvinValues = (0...700).map{ $0 }
     let converter = TemperatureModel()
+    let defaultRow = 100
+    let temperatureScales = ["fahrenheit", "celsius", "kelvin"]
+    var leftControlScale = ""
+    var rightControlScale = ""
+    lazy var currentSelectedTemperatureValues = converter.temperatureConverter(currentApparentFahrenheit: Double(defaultRow))
     
     
     // MARK: - View setup
@@ -26,7 +33,10 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
         temperaturePicker.dataSource = self
         temperaturePicker.delegate = self
         
-        setLabelValue()
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.refreshPressed))
+        self.navigationItem.rightBarButtonItem = refresh
+        
+        refreshPressed()
     }
     
     
@@ -56,11 +66,45 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     
     func setLabelValue() {
         
-        let converterValues = converter.temperatureConverter(currentApparentFahrenheit: Double(fahrenheitValues[temperaturePicker.selectedRow(inComponent: 0)]))
+        currentSelectedTemperatureValues = converter.temperatureConverter(currentApparentFahrenheit: Double(fahrenheitValues[temperaturePicker.selectedRow(inComponent: 0)]))
         
-        temperatureLabel.text = converterValues.celsius
+        temperatureLabel.text = currentSelectedTemperatureValues[rightControlScale]
     }
     
-    // TODO: - Refresh button
+    // MARK: - Segmented controls
+    
+    // TODO: Left segmented control
+    @IBAction func leftControlPressed(_ sender: UISegmentedControl) {
+        switch leftControl.selectedSegmentIndex {
+        case 0:
+            leftControlScale = temperatureScales[0]
+        case 1:
+            leftControlScale = temperatureScales[1]
+        case 2:
+            leftControlScale = temperatureScales[2]
+        default:
+            print("Error leftControl")
+        }
+    }
+    
+    @IBAction func rightControlPressed(_ sender: UISegmentedControl) {
+        rightControlScale = temperatureScales[rightControl.selectedSegmentIndex]
+        
+        setLabelValue()
+    }
+    
+    
+    // MARK: - Refresh button
+    
+    @objc func refreshPressed() {
+        temperaturePicker.selectRow(defaultRow, inComponent: 0, animated: true)
+        
+        leftControl.selectedSegmentIndex = 0
+        leftControlScale = temperatureScales[leftControl.selectedSegmentIndex]
+        rightControl.selectedSegmentIndex = 1
+        rightControlScale = temperatureScales[rightControl.selectedSegmentIndex]
+        
+        setLabelValue()
+    }
     
 }

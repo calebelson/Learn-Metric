@@ -10,7 +10,7 @@ import Foundation
 
 class TemperatureModel {
     
-    func temperatureConverter(currentApparentFahrenheit: Double?) -> (fahrenheit: String, celsius: String, kelvin: String) {
+    func temperatureConverter(currentApparentFahrenheit: Double?) -> [String:String] {
         
         let formatter = NumberFormatter()
         let unitFormatter = MeasurementFormatter()
@@ -29,8 +29,8 @@ class TemperatureModel {
         // Kelvin is rounded to 1 decimal place
         let formattedKelvinCurrentTemp = unitFormatter.string(from: currentFahrenheitTemp.converted(to: .kelvin))
         
-        let temperature = (formattedFahrenheitCurrentTemp, formattedCelsiusCurrentTemp, formattedKelvinCurrentTemp)
+        let temperatures = ["fahrenheit":formattedFahrenheitCurrentTemp, "celsius":formattedCelsiusCurrentTemp, "kelvin":formattedKelvinCurrentTemp]
     
-    return temperature
+    return temperatures
     }
 }

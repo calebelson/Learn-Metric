@@ -207,6 +207,32 @@
                                     <constraint firstItem="ESa-z4-u7y" firstAttribute="width" secondItem="Tjg-Ls-Ox9" secondAttribute="width" id="i4z-00-MDL"/>
                                 </constraints>
                             </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HdB-iC-pIQ" userLabel="Left Control">
+                                <rect key="frame" x="35" y="262" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="F"/>
+                                    <segment title="C"/>
+                                    <segment title="K"/>
+                                </segments>
+                                <color key="tintColor" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="leftControlPressed:" destination="ctm-ut-2Wa" eventType="valueChanged" id="ttz-fV-xfr"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NEF-ZK-4Eu" userLabel="Right Control">
+                                <rect key="frame" x="229" y="262" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="F"/>
+                                    <segment title="C"/>
+                                    <segment title="K"/>
+                                </segments>
+                                <color key="tintColor" red="0.69803921570000005" green="0.84313725490000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="rightControlPressed:" destination="ctm-ut-2Wa" eventType="valueChanged" id="foD-k1-e2E"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -217,6 +243,8 @@
                         <viewLayoutGuide key="safeArea" id="s3P-pb-CoO"/>
                     </view>
                     <connections>
+                        <outlet property="leftControl" destination="HdB-iC-pIQ" id="I7K-rB-26H"/>
+                        <outlet property="rightControl" destination="NEF-ZK-4Eu" id="FRX-7n-NQm"/>
                         <outlet property="temperatureLabel" destination="Tjg-Ls-Ox9" id="8h8-SJ-yTR"/>
                         <outlet property="temperaturePicker" destination="ESa-z4-u7y" id="71f-iU-Ali"/>
                     </connections>

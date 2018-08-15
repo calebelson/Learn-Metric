@@ -129,8 +129,8 @@ class HomeViewController: UIViewController {
                 self.skyIconView.play()
                 
                 self.summaryLabel.textColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
-                self.summaryLabel.text = "It is currently " + weatherSummary! +
-                "\n\(currentTemperatureValues.fahrenheit), \(currentTemperatureValues.celsius)"
+                self.summaryLabel.text = "Currently: " + weatherSummary! +
+                "\n\(currentTemperatureValues["fahrenheit"]!), \(currentTemperatureValues["celsius"]!), \(currentTemperatureValues["kelvin"]!)"
             }
             
         // Failure getting location or weather info
