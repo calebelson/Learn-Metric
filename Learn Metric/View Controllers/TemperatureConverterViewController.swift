@@ -10,24 +10,20 @@ import UIKit
 
 class TemperatureConververterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    
     // MARK: - Parameters and Outlets
     @IBOutlet weak var temperaturePicker: UIPickerView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var leftControl: UISegmentedControl!
     @IBOutlet weak var rightControl: UISegmentedControl!
     
-    let fahrenheitValues = (-460...800).map{ $0 }
-    let celsiusValues = (-273...427).map{ $0 }
-    let kelvinValues = (0...700).map{ $0 }
-    let converter = TemperatureModel()
-    let defaultRow = 100
-    let temperatureScales = ["fahrenheit", "celsius", "kelvin"]
-    var leftControlScale = ""
-    var rightControlScale = ""
-    lazy var currentSelectedTemperatureValues = converter.temperatureConverter(currentApparentFahrenheit: Double(defaultRow))
+    let temperatureRows = [(-460...800).map{ $0 }, (-273...427).map{ $0 },  (0...700).map{ $0 }]
+    let temperatureScales = [UnitTemperature.fahrenheit, UnitTemperature.celsius, UnitTemperature.kelvin]
+    lazy var selectedPickerRows = temperatureRows[0]
+    lazy var currentlySelectedTemperature = defaultTemperatureValue
+    let defaultTemperatureValue = Measurement(value: 70, unit: UnitTemperature.fahrenheit)
+    let scaleRowModifiers = [460, 273, 0]
     
-    
+
     // MARK: - View setup
     override func viewDidLoad() {
         temperaturePicker.dataSource = self
@@ -46,50 +42,46 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return fahrenheitValues.count
+        return temperatureRows[leftControl.selectedSegmentIndex].count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(fahrenheitValues[row])
+        return String(selectedPickerRows[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        currentlySelectedTemperature = Measurement(value: Double(temperatureRows[leftControl.selectedSegmentIndex][row]), unit: temperatureScales[leftControl.selectedSegmentIndex])
+        
         setLabelValue()
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = String(fahrenheitValues[row])
+        let titleData = String(selectedPickerRows[row])
         let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)])
         
         return myTitle
     }
     
-    func setLabelValue() {
-        
-        currentSelectedTemperatureValues = converter.temperatureConverter(currentApparentFahrenheit: Double(fahrenheitValues[temperaturePicker.selectedRow(inComponent: 0)]))
-        
-        temperatureLabel.text = currentSelectedTemperatureValues[rightControlScale]
-    }
-    
     // MARK: - Segmented controls
     
-    // TODO: Left segmented control
     @IBAction func leftControlPressed(_ sender: UISegmentedControl) {
-        switch leftControl.selectedSegmentIndex {
-        case 0:
-            leftControlScale = temperatureScales[0]
-        case 1:
-            leftControlScale = temperatureScales[1]
-        case 2:
-            leftControlScale = temperatureScales[2]
-        default:
-            print("Error leftControl")
-        }
+        
+        // To prevent drift from repeated scale changes
+        let temp = currentlySelectedTemperature
+        
+        selectedPickerRows = temperatureRows[leftControl.selectedSegmentIndex]
+        temperaturePicker.reloadComponent(0)
+        
+        temperaturePicker.selectRow(Int(currentlySelectedTemperature.converted(to: temperatureScales[leftControl.selectedSegmentIndex]).value) + scaleRowModifiers[leftControl.selectedSegmentIndex], inComponent: 0, animated: true)
+        
+        currentlySelectedTemperature = Measurement(value: Double(temperatureRows[leftControl.selectedSegmentIndex][temperaturePicker.selectedRow(inComponent: 0)]), unit: temperatureScales[leftControl.selectedSegmentIndex])
+        
+        currentlySelectedTemperature = temp
+        
+        setLabelValue()
     }
     
     @IBAction func rightControlPressed(_ sender: UISegmentedControl) {
-        rightControlScale = temperatureScales[rightControl.selectedSegmentIndex]
-        
         setLabelValue()
     }
     
@@ -97,14 +89,27 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     // MARK: - Refresh button
     
     @objc func refreshPressed() {
-        temperaturePicker.selectRow(defaultRow, inComponent: 0, animated: true)
+
+        temperaturePicker.selectRow(530, inComponent: 0, animated: false)
         
-        leftControl.selectedSegmentIndex = 0
-        leftControlScale = temperatureScales[leftControl.selectedSegmentIndex]
         rightControl.selectedSegmentIndex = 1
-        rightControlScale = temperatureScales[rightControl.selectedSegmentIndex]
-        
         setLabelValue()
     }
     
+    func setLabelValue() {
+        let numberFormatter = NumberFormatter()
+        let temperatureFormatter = MeasurementFormatter()
+        temperatureFormatter.unitOptions = .providedUnit
+        
+        // Fahrenheit is rounded to integer, celsius and kelvin to one decimal place
+        if rightControl.selectedSegmentIndex == 0 {
+            numberFormatter.maximumFractionDigits = 0
+        } else {
+            numberFormatter.maximumFractionDigits = 1
+        }
+        
+        temperatureFormatter.numberFormatter = numberFormatter
+        
+        temperatureLabel.text = temperatureFormatter.string(from: currentlySelectedTemperature.converted(to: temperatureScales[rightControl.selectedSegmentIndex]))
+    }
 }

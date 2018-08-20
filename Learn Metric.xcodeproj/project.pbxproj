@@ -11,7 +11,6 @@
 		7099CAD8071BEBBDAB2AC1F4 /* Pods_Learn_MetricUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0032AB17ADBEEA45A9AF85BD /* Pods_Learn_MetricUITests.framework */; };
 		8147238CD14DECEE1B77F771 /* Pods_Learn_MetricTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E8C1401A60584181CC172C /* Pods_Learn_MetricTests.framework */; };
 		BCC452C2A123222AF3B4D585 /* Pods_Learn_Metric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28807D7AC6745186567E3D11 /* Pods_Learn_Metric.framework */; };
-		C904C5E320D75D6200DA14AA /* TemperatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904C5E220D75D6200DA14AA /* TemperatureModel.swift */; };
 		C905182620C9FE7900EBBCD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905182520C9FE7900EBBCD0 /* AppDelegate.swift */; };
 		C905182820C9FE7900EBBCD0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905182720C9FE7900EBBCD0 /* HomeViewController.swift */; };
 		C905182B20C9FE7900EBBCD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C905182920C9FE7900EBBCD0 /* Main.storyboard */; };
@@ -53,7 +52,6 @@
 		7DDD53C46EB0F6DE2E357911 /* Pods-Learn Metric.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Learn Metric.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Learn Metric/Pods-Learn Metric.debug.xcconfig"; sourceTree = "<group>"; };
 		8E7EB85439DFD750EAE38F65 /* Pods-Learn MetricUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Learn MetricUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Learn MetricUITests/Pods-Learn MetricUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		99DA118CC9B62D71A8CFF447 /* Pods-Learn Metric.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Learn Metric.release.xcconfig"; path = "Pods/Target Support Files/Pods-Learn Metric/Pods-Learn Metric.release.xcconfig"; sourceTree = "<group>"; };
-		C904C5E220D75D6200DA14AA /* TemperatureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureModel.swift; sourceTree = "<group>"; };
 		C905182220C9FE7900EBBCD0 /* Learn Metric.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Learn Metric.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C905182520C9FE7900EBBCD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C905182720C9FE7900EBBCD0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 		C963023F20D86B0400D24EE3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C904C5E220D75D6200DA14AA /* TemperatureModel.swift */,
 				C960711D20D484130016A797 /* IconAndLoadingModel.swift */,
 			);
 			path = Models;
@@ -422,7 +419,6 @@
 				C905182820C9FE7900EBBCD0 /* HomeViewController.swift in Sources */,
 				C905182620C9FE7900EBBCD0 /* AppDelegate.swift in Sources */,
 				C905182E20C9FE7900EBBCD0 /* Learn_Metric.xcdatamodeld in Sources */,
-				C904C5E320D75D6200DA14AA /* TemperatureModel.swift in Sources */,
 				C960711A20D43D900016A797 /* SKYIconView.swift in Sources */,
 				C960711E20D484130016A797 /* IconAndLoadingModel.swift in Sources */,
 			);
