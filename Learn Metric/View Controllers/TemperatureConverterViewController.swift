@@ -97,18 +97,9 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     }
     
     func setLabelValue() {
-        let numberFormatter = NumberFormatter()
         let temperatureFormatter = MeasurementFormatter()
         temperatureFormatter.unitOptions = .providedUnit
-        
-        // Fahrenheit is rounded to integer, celsius and kelvin to one decimal place
-        if rightControl.selectedSegmentIndex == 0 {
-            numberFormatter.maximumFractionDigits = 0
-        } else {
-            numberFormatter.maximumFractionDigits = 1
-        }
-        
-        temperatureFormatter.numberFormatter = numberFormatter
+        temperatureFormatter.numberFormatter.maximumFractionDigits = 0
         
         temperatureLabel.text = temperatureFormatter.string(from: currentlySelectedTemperature.converted(to: temperatureScales[rightControl.selectedSegmentIndex]))
     }

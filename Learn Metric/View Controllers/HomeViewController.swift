@@ -120,20 +120,12 @@ class HomeViewController: UIViewController {
         case true:
             
             let temperatureFormatter = MeasurementFormatter()
-            let numberFormatter = NumberFormatter()
             temperatureFormatter.unitOptions = .providedUnit
-            
-            // Formatted fahrenheit measurement for retrieved temperature, rounded to integer value
-            numberFormatter.maximumFractionDigits = 0
-            temperatureFormatter.numberFormatter = numberFormatter
+            temperatureFormatter.numberFormatter.maximumFractionDigits = 0
             
             let fahrenheitMeasurement = Measurement(value: apparentTemperature!, unit: UnitTemperature.fahrenheit)
+            
             let formattedFahrenheit = temperatureFormatter.string(from: fahrenheitMeasurement)
-            
-            // Celsius and kelvin values are rounded to 1 decimal digit
-            numberFormatter.maximumFractionDigits = 1
-            temperatureFormatter.numberFormatter = numberFormatter
-            
             let formattedCelsius = temperatureFormatter.string(from: fahrenheitMeasurement.converted(to: .celsius))
             let formattedKelvin = temperatureFormatter.string(from: fahrenheitMeasurement.converted(to: .kelvin))
             
@@ -145,7 +137,7 @@ class HomeViewController: UIViewController {
                 
                 self.summaryLabel.textColor = #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)
                 self.summaryLabel.text = "Currently: " + weatherSummary! +
-                "\n\(formattedFahrenheit), \(formattedCelsius), \(formattedKelvin)"
+                "\n\(formattedFahrenheit)     \(formattedCelsius)     \(formattedKelvin)"
             }
             
         // Failure getting location or weather info
