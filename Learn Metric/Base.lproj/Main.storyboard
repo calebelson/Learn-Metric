@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qt7-kW-dJh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qt7-kW-dJh">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -207,9 +207,8 @@
                                     <constraint firstItem="ESa-z4-u7y" firstAttribute="width" secondItem="Tjg-Ls-Ox9" secondAttribute="width" id="i4z-00-MDL"/>
                                 </constraints>
                             </stackView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HdB-iC-pIQ" userLabel="Left Control">
-                                <rect key="frame" x="35" y="262" width="121" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HdB-iC-pIQ" userLabel="Left Control">
+                                <rect key="frame" x="39.666666666666657" y="262" width="108" height="29"/>
                                 <segments>
                                     <segment title="F"/>
                                     <segment title="C"/>
@@ -220,9 +219,8 @@
                                     <action selector="leftControlPressed:" destination="ctm-ut-2Wa" eventType="valueChanged" id="ttz-fV-xfr"/>
                                 </connections>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NEF-ZK-4Eu" userLabel="Right Control">
-                                <rect key="frame" x="229" y="262" width="121" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NEF-ZK-4Eu" userLabel="Right Control">
+                                <rect key="frame" x="227.33333333333337" y="262" width="108" height="29"/>
                                 <segments>
                                     <segment title="F"/>
                                     <segment title="C"/>
@@ -236,9 +234,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="NEF-ZK-4Eu" firstAttribute="centerX" secondItem="Tjg-Ls-Ox9" secondAttribute="centerX" id="KDH-K2-xeF"/>
                             <constraint firstItem="EhO-1B-yvT" firstAttribute="leading" secondItem="s3P-pb-CoO" secondAttribute="leading" id="R3a-3r-Gng"/>
+                            <constraint firstItem="HdB-iC-pIQ" firstAttribute="width" secondItem="ESa-z4-u7y" secondAttribute="height" multiplier="54:108" id="Wlb-gB-AuY"/>
                             <constraint firstItem="EhO-1B-yvT" firstAttribute="centerY" secondItem="KGs-vQ-dzS" secondAttribute="centerY" id="XJt-xk-Jz2"/>
+                            <constraint firstItem="HdB-iC-pIQ" firstAttribute="width" secondItem="NEF-ZK-4Eu" secondAttribute="width" multiplier="1:1" id="kq1-Tb-6PC"/>
+                            <constraint firstItem="EhO-1B-yvT" firstAttribute="top" secondItem="HdB-iC-pIQ" secondAttribute="bottom" constant="8" id="lav-hL-q1C"/>
                             <constraint firstAttribute="trailing" secondItem="EhO-1B-yvT" secondAttribute="trailing" id="qF6-Cy-yMS"/>
+                            <constraint firstItem="HdB-iC-pIQ" firstAttribute="centerX" secondItem="ESa-z4-u7y" secondAttribute="centerX" id="w1C-iu-BDn"/>
+                            <constraint firstItem="EhO-1B-yvT" firstAttribute="top" secondItem="NEF-ZK-4Eu" secondAttribute="bottom" constant="8" id="wvo-c0-z7k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="s3P-pb-CoO"/>
                     </view>
@@ -273,7 +277,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-temperature-50" width="50" height="50"/>
+        <image name="icons8-temperature-50" width="37.5" height="37.5"/>
         <image name="poweredby-oneline-darkbackground" width="3350" height="759"/>
     </resources>
 </document>
