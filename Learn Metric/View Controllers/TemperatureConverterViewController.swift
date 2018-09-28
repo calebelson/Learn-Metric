@@ -57,7 +57,7 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = String(selectedPickerRows[row])
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.6980392157, green: 0.8431372549, blue: 1, alpha: 1)])
         
         return myTitle
     }

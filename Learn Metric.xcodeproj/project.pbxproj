@@ -268,13 +268,16 @@
 				TargetAttributes = {
 					C905182120C9FE7900EBBCD0 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 					};
 					C905183820C9FE7A00EBBCD0 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 						TestTargetID = C905182120C9FE7900EBBCD0;
 					};
 					C905184320C9FE7A00EBBCD0 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 						TestTargetID = C905182120C9FE7900EBBCD0;
 					};
 				};
@@ -604,7 +607,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebelson.Learn-Metric";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -624,7 +627,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebelson.Learn-Metric";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -645,7 +648,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebelson.Learn-MetricTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Learn Metric.app/Learn Metric";
 			};
@@ -667,7 +670,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebelson.Learn-MetricTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Learn Metric.app/Learn Metric";
 			};
@@ -688,7 +691,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebelson.Learn-MetricUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Learn Metric";
 			};
@@ -709,7 +712,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebelson.Learn-MetricUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Learn Metric";
 			};
