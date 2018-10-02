@@ -21,7 +21,6 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     lazy var selectedPickerRows = temperatureRows[0]
     lazy var currentlySelectedTemperature = defaultTemperatureValue
     let defaultTemperatureValue = Measurement(value: 70, unit: UnitTemperature.fahrenheit)
-    let scaleRowModifiers = [460, 273, 0]
     
 
     // MARK: - View setup
@@ -63,7 +62,6 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     }
     
     // MARK: - Segmented controls
-    
     @IBAction func leftControlPressed(_ sender: UISegmentedControl) {
         
         // To prevent drift from repeated scale changes
@@ -72,9 +70,7 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
         selectedPickerRows = temperatureRows[leftControl.selectedSegmentIndex]
         temperaturePicker.reloadComponent(0)
         
-        temperaturePicker.selectRow(Int(currentlySelectedTemperature.converted(to: temperatureScales[leftControl.selectedSegmentIndex]).value) + scaleRowModifiers[leftControl.selectedSegmentIndex], inComponent: 0, animated: true)
-        
-        currentlySelectedTemperature = Measurement(value: Double(temperatureRows[leftControl.selectedSegmentIndex][temperaturePicker.selectedRow(inComponent: 0)]), unit: temperatureScales[leftControl.selectedSegmentIndex])
+        temperaturePicker.selectRow(selectedPickerRows.firstIndex(of: Int(currentlySelectedTemperature.converted(to: temperatureScales[leftControl.selectedSegmentIndex]).value.rounded()))!, inComponent: 0, animated: true)
         
         currentlySelectedTemperature = temp
         

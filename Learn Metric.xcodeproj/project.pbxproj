@@ -22,6 +22,7 @@
 		C960711A20D43D900016A797 /* SKYIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960711920D43D900016A797 /* SKYIconView.swift */; };
 		C960711C20D483920016A797 /* AllAnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960711B20D483920016A797 /* AllAnimationsViewController.swift */; };
 		C960711E20D484130016A797 /* IconAndLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960711D20D484130016A797 /* IconAndLoadingModel.swift */; };
+		C96EE72C2162CDA00093F815 /* DistanceConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96EE72B2162CDA00093F815 /* DistanceConverterController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		C960711920D43D900016A797 /* SKYIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKYIconView.swift; sourceTree = "<group>"; };
 		C960711B20D483920016A797 /* AllAnimationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAnimationsViewController.swift; sourceTree = "<group>"; };
 		C960711D20D484130016A797 /* IconAndLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconAndLoadingModel.swift; sourceTree = "<group>"; };
+		C96EE72B2162CDA00093F815 /* DistanceConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceConverterController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				C905182720C9FE7900EBBCD0 /* HomeViewController.swift */,
 				C960711B20D483920016A797 /* AllAnimationsViewController.swift */,
 				3C886D2721221223000E627F /* TemperatureConverterViewController.swift */,
+				C96EE72B2162CDA00093F815 /* DistanceConverterController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C886D2821221223000E627F /* TemperatureConverterViewController.swift in Sources */,
+				C96EE72C2162CDA00093F815 /* DistanceConverterController.swift in Sources */,
 				C960711C20D483920016A797 /* AllAnimationsViewController.swift in Sources */,
 				C905182820C9FE7900EBBCD0 /* HomeViewController.swift in Sources */,
 				C905182620C9FE7900EBBCD0 /* AppDelegate.swift in Sources */,

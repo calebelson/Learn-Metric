@@ -88,6 +88,14 @@
                                     <segue destination="ctm-ut-2Wa" kind="show" id="5gZ-hL-4Cd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-Sr-Xae">
+                                <rect key="frame" x="284" y="538" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icons8-temperature-filled-50"/>
+                                <connections>
+                                    <segue destination="96v-1i-U6D" kind="show" id="WcN-uL-JJK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -135,6 +143,33 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1076" y="133.00492610837438"/>
+        </scene>
+        <!--Distance Converter View Controller-->
+        <scene sceneID="viU-Fg-QTf">
+            <objects>
+                <viewController id="96v-1i-U6D" customClass="DistanceConverterViewController" customModule="Learn_Metric" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BNP-zs-bvN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test text field" placeholder="Test Text" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uP4-ti-7g8">
+                                <rect key="frame" x="16" y="391" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SxY-sU-aV3"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputToConvert" destination="uP4-ti-7g8" id="xyP-d1-Erl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btt-nQ-Lwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2077.5999999999999" y="-589.65517241379314"/>
         </scene>
         <!--All Animations View Controller-->
         <scene sceneID="Npw-bI-x2f">
@@ -278,6 +313,7 @@
     </scenes>
     <resources>
         <image name="icons8-temperature-50" width="37.5" height="37.5"/>
+        <image name="icons8-temperature-filled-50" width="37.5" height="37.5"/>
         <image name="poweredby-oneline-darkbackground" width="3350" height="759"/>
     </resources>
 </document>
