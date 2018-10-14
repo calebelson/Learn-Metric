@@ -79,21 +79,21 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.69710689045936391" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <viewLayoutGuide key="safeArea" id="vYn-qb-mWp"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-Sr-Xae">
+                                <rect key="frame" x="293" y="625" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icons8-temperature-filled-50"/>
+                                <connections>
+                                    <segue destination="96v-1i-U6D" kind="show" id="WcN-uL-JJK"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3on-RV-XkE">
-                                <rect key="frame" x="16" y="521" width="50" height="50"/>
+                                <rect key="frame" x="16" y="618" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <state key="normal" image="icons8-temperature-50"/>
                                 <connections>
                                     <segue destination="ctm-ut-2Wa" kind="show" id="5gZ-hL-4Cd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-Sr-Xae">
-                                <rect key="frame" x="284" y="538" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icons8-temperature-filled-50"/>
-                                <connections>
-                                    <segue destination="96v-1i-U6D" kind="show" id="WcN-uL-JJK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -144,32 +144,53 @@
             </objects>
             <point key="canvasLocation" x="1076" y="133.00492610837438"/>
         </scene>
-        <!--Distance Converter View Controller-->
+        <!--Length Converter View Controller-->
         <scene sceneID="viU-Fg-QTf">
             <objects>
-                <viewController id="96v-1i-U6D" customClass="DistanceConverterViewController" customModule="Learn_Metric" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="96v-1i-U6D" customClass="LengthConverterViewController" customModule="Learn_Metric" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BNP-zs-bvN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test text field" placeholder="Test Text" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uP4-ti-7g8">
-                                <rect key="frame" x="16" y="391" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Value to convert" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uP4-ti-7g8">
+                                <rect key="frame" x="16" y="394" width="167.66666666666666" height="24"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert"/>
+                                <connections>
+                                    <action selector="inputChanged:" destination="96v-1i-U6D" eventType="editingChanged" id="U44-bd-J4K"/>
+                                </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Converted value" textAlignment="center" lineBreakMode="middleTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLi-A3-q0K" userLabel="Converted Value">
+                                <rect key="frame" x="191.66666666666663" y="394" width="167.33333333333337" height="24"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="uP4-ti-7g8" firstAttribute="leading" secondItem="SxY-sU-aV3" secondAttribute="leading" constant="16" id="5Fb-Q9-luw"/>
+                            <constraint firstItem="qLi-A3-q0K" firstAttribute="leading" secondItem="uP4-ti-7g8" secondAttribute="trailing" constant="8" id="6DQ-fw-CUb"/>
+                            <constraint firstItem="qLi-A3-q0K" firstAttribute="centerY" secondItem="BNP-zs-bvN" secondAttribute="centerY" id="B5N-dx-LJr"/>
+                            <constraint firstItem="SxY-sU-aV3" firstAttribute="trailing" secondItem="qLi-A3-q0K" secondAttribute="trailing" constant="16" id="EC4-Lk-QCK"/>
+                            <constraint firstItem="qLi-A3-q0K" firstAttribute="width" secondItem="uP4-ti-7g8" secondAttribute="width" id="Tlf-a7-9G4"/>
+                            <constraint firstItem="qLi-A3-q0K" firstAttribute="height" secondItem="uP4-ti-7g8" secondAttribute="height" id="a74-Z4-7M2"/>
+                            <constraint firstItem="uP4-ti-7g8" firstAttribute="centerY" secondItem="BNP-zs-bvN" secondAttribute="centerY" id="ngt-g6-0z0"/>
+                            <constraint firstItem="qLi-A3-q0K" firstAttribute="leading" secondItem="uP4-ti-7g8" secondAttribute="trailing" constant="8" id="phy-HJ-cjf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SxY-sU-aV3"/>
                     </view>
                     <connections>
-                        <outlet property="inputToConvert" destination="uP4-ti-7g8" id="xyP-d1-Erl"/>
+                        <outlet property="" destination="qLi-A3-q0K" id="es1-dC-cwi"/>
+                        <outlet property="valueToConvert" destination="uP4-ti-7g8" id="xyP-d1-Erl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btt-nQ-Lwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2077.5999999999999" y="-589.65517241379314"/>
+            <point key="canvasLocation" x="2076" y="-590.39408866995075"/>
         </scene>
         <!--All Animations View Controller-->
         <scene sceneID="Npw-bI-x2f">
