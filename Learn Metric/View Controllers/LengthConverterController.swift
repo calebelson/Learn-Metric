@@ -13,10 +13,14 @@ class LengthConverterViewController: UIViewController {
     @IBOutlet weak var convertedValue: UILabel!
     
     override func viewDidLoad() {
-        valueToConvert.attributedPlaceholder = NSAttributedString(string: "Value to convert", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 0.5)])
         valueToConvert.backgroundColor = .black
         
         convertedValue.backgroundColor = .black
+        
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.refreshPressed))
+        self.navigationItem.rightBarButtonItem = refresh
+        
+        refreshPressed()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,5 +47,13 @@ class LengthConverterViewController: UIViewController {
             // Convert Value of input
             convertedValue.text = lengthFormatter.string(for: Measurement(value: Double(valueToConvert.text!) ?? 0, unit: UnitLength.feet).converted(to: .meters))
         }
+    }
+    
+    // MARK: - Refresh button
+    
+    @objc func refreshPressed() {
+        valueToConvert.text = ""
+        valueToConvert.attributedPlaceholder = NSAttributedString(string: "Value to convert", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 0.5)])
+        convertedValue.text = "Converted value"
     }
 }
