@@ -14,6 +14,7 @@ class LengthConverterViewController: UIViewController {
     
     override func viewDidLoad() {
         valueToConvert.backgroundColor = .black
+        valueToConvert.attributedPlaceholder = NSAttributedString(string: "Value to convert", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 0.5)])
         
         convertedValue.backgroundColor = .black
         
@@ -50,10 +51,8 @@ class LengthConverterViewController: UIViewController {
     }
     
     // MARK: - Refresh button
-    
     @objc func refreshPressed() {
         valueToConvert.text = ""
-        valueToConvert.attributedPlaceholder = NSAttributedString(string: "Value to convert", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.6979569793, green: 0.8412405849, blue: 0.9987565875, alpha: 0.5)])
-        convertedValue.text = "Converted value"
+        inputChanged(self)
     }
 }

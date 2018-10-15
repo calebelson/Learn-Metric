@@ -83,7 +83,6 @@ class TemperatureConververterViewController: UIViewController, UIPickerViewDataS
     
     
     // MARK: - Refresh button
-    
     @objc func refreshPressed() {
 
         temperaturePicker.selectRow(530, inComponent: 0, animated: false)
