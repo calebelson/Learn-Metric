@@ -30,7 +30,7 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-RV-ds4">
-                                <rect key="frame" x="0.0" y="463" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="463" width="375" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="lxq-2X-oKg"/>
                                 </constraints>
@@ -79,17 +79,15 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.69710689045936391" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <viewLayoutGuide key="safeArea" id="vYn-qb-mWp"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-Sr-Xae">
-                                <rect key="frame" x="293" y="625" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icons8-temperature-filled-50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-Sr-Xae">
+                                <rect key="frame" x="322" y="631" width="37" height="37"/>
+                                <state key="normal" image="icons8-length-50"/>
                                 <connections>
                                     <segue destination="96v-1i-U6D" kind="show" id="dbV-1A-v2O"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3on-RV-XkE">
-                                <rect key="frame" x="16" y="618" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3on-RV-XkE">
+                                <rect key="frame" x="16" y="631" width="37" height="37"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <state key="normal" image="icons8-temperature-50"/>
                                 <connections>
@@ -101,11 +99,16 @@
                         <constraints>
                             <constraint firstItem="JQV-RV-ds4" firstAttribute="top" secondItem="5W9-BE-kYb" secondAttribute="bottom" id="0hN-vd-NCv"/>
                             <constraint firstItem="5W9-BE-kYb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="B2Q-Wz-e82"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4gd-Sr-Xae" secondAttribute="trailing" constant="16" id="D6n-k3-ItG"/>
                             <constraint firstItem="5W9-BE-kYb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="MHL-VY-8uS"/>
+                            <constraint firstItem="3on-RV-XkE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NIP-o8-PCB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JQV-RV-ds4" secondAttribute="bottom" constant="215" id="RwL-Rk-Gly"/>
                             <constraint firstItem="JQV-RV-ds4" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="UEb-Oo-XFI"/>
                             <constraint firstItem="JQV-RV-ds4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gVL-KW-Pod"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3on-RV-XkE" secondAttribute="bottom" constant="110" id="mvP-oR-ArT"/>
                             <constraint firstItem="5W9-BE-kYb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="og1-Ru-QH2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5W9-BE-kYb" secondAttribute="trailing" id="u0X-tM-7Nu"/>
+                            <constraint firstItem="4gd-Sr-Xae" firstAttribute="centerY" secondItem="3on-RV-XkE" secondAttribute="centerY" id="zqu-uQ-yWO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -333,8 +336,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-length-50" width="37.5" height="37.5"/>
         <image name="icons8-temperature-50" width="37.5" height="37.5"/>
-        <image name="icons8-temperature-filled-50" width="37.5" height="37.5"/>
         <image name="poweredby-oneline-darkbackground" width="3350" height="759"/>
     </resources>
 </document>
