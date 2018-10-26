@@ -19,6 +19,7 @@
 		C905183320C9FE7A00EBBCD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C905183120C9FE7A00EBBCD0 /* LaunchScreen.storyboard */; };
 		C905183E20C9FE7A00EBBCD0 /* Learn_MetricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905183D20C9FE7A00EBBCD0 /* Learn_MetricTests.swift */; };
 		C905184920C9FE7A00EBBCD0 /* Learn_MetricUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905184820C9FE7A00EBBCD0 /* Learn_MetricUITests.swift */; };
+		C91E97B621824A410017C5A5 /* LengthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E97B521824A410017C5A5 /* LengthModel.swift */; };
 		C960711A20D43D900016A797 /* SKYIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960711920D43D900016A797 /* SKYIconView.swift */; };
 		C960711C20D483920016A797 /* AllAnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960711B20D483920016A797 /* AllAnimationsViewController.swift */; };
 		C960711E20D484130016A797 /* IconAndLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960711D20D484130016A797 /* IconAndLoadingModel.swift */; };
@@ -67,6 +68,7 @@
 		C905184420C9FE7A00EBBCD0 /* Learn MetricUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Learn MetricUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C905184820C9FE7A00EBBCD0 /* Learn_MetricUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Learn_MetricUITests.swift; sourceTree = "<group>"; };
 		C905184A20C9FE7A00EBBCD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C91E97B521824A410017C5A5 /* LengthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthModel.swift; sourceTree = "<group>"; };
 		C960711920D43D900016A797 /* SKYIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKYIconView.swift; sourceTree = "<group>"; };
 		C960711B20D483920016A797 /* AllAnimationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAnimationsViewController.swift; sourceTree = "<group>"; };
 		C960711D20D484130016A797 /* IconAndLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconAndLoadingModel.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				C960711D20D484130016A797 /* IconAndLoadingModel.swift */,
+				C91E97B521824A410017C5A5 /* LengthModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				C96EE72C2162CDA00093F815 /* LengthConverterController.swift in Sources */,
 				C960711C20D483920016A797 /* AllAnimationsViewController.swift in Sources */,
 				C905182820C9FE7900EBBCD0 /* HomeViewController.swift in Sources */,
+				C91E97B621824A410017C5A5 /* LengthModel.swift in Sources */,
 				C905182620C9FE7900EBBCD0 /* AppDelegate.swift in Sources */,
 				C905182E20C9FE7900EBBCD0 /* Learn_Metric.xcdatamodeld in Sources */,
 				C960711A20D43D900016A797 /* SKYIconView.swift in Sources */,

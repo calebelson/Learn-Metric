@@ -173,6 +173,11 @@
                                 <color key="textColor" red="0.72618448729999996" green="0.83693432810000001" blue="0.98433631659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VvZ-Tc-IQD">
+                                <rect key="frame" x="0.0" y="150" width="414" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pickerView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="uP4-ti-7g8" firstAttribute="leading" secondItem="SxY-sU-aV3" secondAttribute="leading" constant="16" id="5Fb-Q9-luw"/>
@@ -188,12 +193,13 @@
                     </view>
                     <connections>
                         <outlet property="convertedValue" destination="qLi-A3-q0K" id="PH4-7M-iMZ"/>
+                        <outlet property="scalePickerView" destination="VvZ-Tc-IQD" id="wiZ-wg-OBf"/>
                         <outlet property="valueToConvert" destination="uP4-ti-7g8" id="xyP-d1-Erl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btt-nQ-Lwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2076" y="-590.39408866995075"/>
+            <point key="canvasLocation" x="2075.36231884058" y="-590.625"/>
         </scene>
         <!--All Animations View Controller-->
         <scene sceneID="Npw-bI-x2f">
